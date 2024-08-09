@@ -12,6 +12,7 @@ import { default_col } from "./helper/helper"
 import quickSort from "./algorithms/quickSort"
 import { BiReset } from "react-icons/bi"
 import { FaRegCircleStop } from "react-icons/fa6"
+import Tooltip from "./components/Tooltip"
 
 function Sorting() {
   const [initialColumns, setInitialState] = useState([])
@@ -71,18 +72,22 @@ function Sorting() {
               STOP <FaRegCircleStop />
             </button>
 
-            <button
-              className="btn"
-              disabled={sortRef.current || disable}
-              style={{ backgroundColor: "#a66cff" }}
-              onClick={async () => {
-                setDisable(true)
-                await bubbleSort(columns, setColumns, time, sortRef)
-                setDisable(false)
-                sortRef.current = true
-              }}>
-              Bubble Sort
-            </button>
+            <div className="btn-wrapper">
+              <button
+                className="btn"
+                disabled={sortRef.current || disable}
+                style={{ backgroundColor: "#a66cff" }}
+                onClick={async () => {
+                  setDisable(true)
+                  await bubbleSort(columns, setColumns, time, sortRef)
+                  setDisable(false)
+                  sortRef.current = true
+                }}>
+                Bubble Sort
+                <Tooltip index={0} />
+              </button>
+            </div>
+
             <button
               className="btn"
               disabled={sortRef.current || disable}
@@ -94,6 +99,7 @@ function Sorting() {
               }}
               style={{ backgroundColor: "#a66cff" }}>
               Insertion Sort
+              <Tooltip index={1} />
             </button>
             <button
               className="btn"
@@ -106,6 +112,7 @@ function Sorting() {
               }}
               style={{ backgroundColor: "#a66cff" }}>
               selection Sort
+              <Tooltip index={2} />
             </button>
 
             <button
@@ -119,6 +126,7 @@ function Sorting() {
               }}
               style={{ backgroundColor: "#a66cff" }}>
               Merge Sort
+              <Tooltip index={3} />
             </button>
 
             <button
@@ -132,6 +140,7 @@ function Sorting() {
               }}
               style={{ backgroundColor: "#a66cff" }}>
               Quick Sort
+              <Tooltip index={4} />
             </button>
 
             <button
